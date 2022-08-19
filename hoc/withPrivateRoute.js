@@ -4,8 +4,9 @@ import Router from "next/router";
 const checkUserAuthentication = (authCookie) => {
   const _cookies = Object.keys(authCookie)
   console.log(_cookies)
+  let cookiesName=  process.env.NODE_ENV === "production" ? "__Secure-next-auth.session-token": "next-auth.session-token"
   let checkCookie = _cookies.reduce((acc, curr) => {
-    if (curr.includes('next-auth.session-token')) {
+    if (curr.includes(cookiesName)) {
       acc = authCookie[curr]
     }
     return acc

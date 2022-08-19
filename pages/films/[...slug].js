@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "../../styles/movie.id.module.css";
 import MainLayout from "../../components/shared/MainLayout";
 import dynamic from "next/dynamic";
-const Comments = dynamic(() => import("../../components/shared/Comments"))
+const Comments = dynamic(() => import("../../components/shared/Comments"));
 import cookies from "next-cookies";
 import useWindowDimensions from "../../hook/useWindowDimensions";
 import { useRouter } from "next/router";
@@ -128,7 +128,11 @@ const MovieInfo = ({ movie, isAuthenticated }) => {
 
 export async function getServerSideProps(context) {
   const authCookie = cookies(context);
-  const token = authCookie["next-auth.session-token"];
+  let cookiesName =
+    process.env.NODE_ENV === "production"
+      ? "__Secure-next-auth.session-token"
+      : "next-auth.session-token";
+  const token = authCookie[cookiesName];
   const id = context.query.slug[0];
   const endpoint = ` https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`;
   const movie = await (await fetch(endpoint)).json();
