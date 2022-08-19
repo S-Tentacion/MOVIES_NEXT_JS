@@ -3,9 +3,11 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { signOut } from "next-auth/react";
+import useWindowDimensions from "../../hook/useWindowDimensions";
 const Header = () => {
   const session = useSession();
   const router = useRouter();
+  const { width } = useWindowDimensions();
   const handleLogoutIn = (e) => {
     e.preventDefault();
     if (session.status === "authenticated") {
@@ -79,21 +81,27 @@ const Header = () => {
               </h3>
             </div>
           </Link>
-          <button className="logout" onClick={handleLogoutIn}>
-            <div className="d_flex_center">
-              {session.status === "authenticated" ? (
-                <>
-                  <img src="/log-out.svg" alt="logout" />
-                  <p>Sign Out</p>
-                </>
-              ) : (
-                <>
-                  <img src="/log-in.svg" alt="login" />
-                  <p>Sign In</p>
-                </>
-              )}
-            </div>
-          </button>
+          {width > 420 ? (
+            <button className="logout" onClick={handleLogoutIn}>
+              <div className="d_flex_center">
+                {session.status === "authenticated" ? (
+                  <>
+                    <img src="/log-out.svg" alt="logout" />
+                    <p>Sign Out</p>
+                  </>
+                ) : (
+                  <>
+                    <img src="/log-in.svg" alt="login" />
+                    <p>Sign In</p>
+                  </>
+                )}
+              </div>
+            </button>
+          ) : session.status === "authenticated" ? (
+            <img src="/log-out.svg" alt="logout" onClick={handleLogoutIn}/>
+          ) : (
+            <img src="/log-in.svg" alt="login" onClick={handleLogoutIn}/>
+          )}
         </div>
       </div>
     </header>

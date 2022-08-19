@@ -18,9 +18,9 @@ const MovieInfo = ({ movie, isAuthenticated }) => {
   const [show, setShow] = useState(false);
   const { width } = useWindowDimensions();
   const router = useRouter();
-  console.log(isAuthenticated);
+  // console.log(isAuthenticated); style={{ height: width <= 430 ? "100vh" : "" }}
   return (
-    <MainLayout style={{ height: width <= 430 ? "100vh" : "" }}>
+    <MainLayout>
       <div className={styles.main}>
         <>
           <div className={styles.poster}>

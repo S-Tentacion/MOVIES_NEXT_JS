@@ -53,16 +53,18 @@ const Comments = () => {
           Add Comment
         </button>
       </form>
-      {comments.map((comment, idx) => {
-        return (
-          <Comment
-            key={idx}
-            item={comment}
-            setComments={setComments}
-            margin={0}
-          />
-        );
-      })}
+      <div style={{ width: "100%" }}>
+        {comments.map((comment, idx) => {
+          return (
+            <Comment
+              key={idx}
+              item={comment}
+              setComments={setComments}
+              margin={0}
+            />
+          );
+        })}
+      </div>
     </>
   );
 };
