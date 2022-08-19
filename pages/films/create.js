@@ -14,7 +14,6 @@ const CreateFilm = () => {
   const [img, setImg] = useState();
   const router = useRouter();
   const handleCreate = (values) => {
-    debugger;
     delete values.img;
     values = {
       ...values,
@@ -29,7 +28,6 @@ const CreateFilm = () => {
     } else {
       localStorage.setItem("created", JSON.stringify([values]));
     }
-    localStorage.setItem("created", JSON.stringify(ary));
     router.push({
       pathname: "/films",
     });
@@ -84,7 +82,7 @@ const CreateFilm = () => {
                     {errors.overview && touched.overview && errors.overview}
                   </p>
                   <label htmlFor="image">Image</label>
-                  {img?.length ? (
+                  {img &&  img?.length ? (
                     <div className="img_wrapper">
                       <img src={img} alt="" />
                     </div>
