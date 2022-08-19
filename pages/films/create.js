@@ -84,7 +84,11 @@ const CreateFilm = () => {
                     {errors.overview && touched.overview && errors.overview}
                   </p>
                   <label htmlFor="image">Image</label>
-                  <img src={img} alt="" />
+                  {img?.length ? (
+                    <div className="img_wrapper">
+                      <img src={img} alt="" />
+                    </div>
+                  ) : null}
                   <input
                     type="file"
                     name="img"
