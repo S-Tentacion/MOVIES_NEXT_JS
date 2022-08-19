@@ -62,16 +62,32 @@ const Footer = () => {
           <div className="footer-col">
             <h4>follow us</h4>
             <div className="social-links">
-              <a href="#">
+              <a
+                href="https://www.facebook.com/difxexchange"
+                target={"_blank"}
+                rel={"noreferrer"}
+              >
                 <i className="fab fa-facebook-f"></i>
               </a>
-              <a href="#">
+              <a
+                href="https://twitter.com/difx_io?lang=en"
+                target={"_blank"}
+                rel={"noreferrer"}
+              >
                 <i className="fab fa-twitter"></i>
               </a>
-              <a href="#">
+              <a
+                href="https://www.instagram.com/difx.io/"
+                target={"_blank"}
+                rel={"noreferrer"}
+              >
                 <i className="fab fa-instagram"></i>
               </a>
-              <a href="#">
+              <a
+                href="https://www.linkedin.com/company/difx-io/"
+                target={"_blank"}
+                rel={"noreferrer"}
+              >
                 <i className="fab fa-linkedin-in"></i>
               </a>
             </div>
